@@ -1,5 +1,10 @@
 {
-  "HomePage": {
-    "title": "Hello world!"
+  "Home": {
+    "Hero": {
+      "badge": "New Collection",
+      "title": "Discover Our Latest Fashion",
+      "description": "Shop the newest arrivals with exclusive offers and premium quality",
+      "button": "Shop Now"
+    }
   }
 }
