@@ -1,4 +1,9 @@
 {
+  "CategoryTitle": {
+    "title": "Categories",
+    "subtitle": "Browse By Category",
+    "btnContent": "More Categories"
+  },
   "Home": {
     "Hero": {
       "badge": "New Collection",

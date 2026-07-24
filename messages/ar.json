@@ -1,4 +1,9 @@
 {
+  "CategoryTitle": {
+    "title": "التصنيفات",
+    "subtitle": "تصفح حسب التصنيف",
+    "btnContent": "المزيد من التصنيفات"
+  },
   "Home": {
     "Hero": {
       "badge": "المجموعة الجديدة",

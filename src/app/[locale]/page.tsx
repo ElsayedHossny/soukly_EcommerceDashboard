@@ -1,18 +1,15 @@
-import { useTranslations } from "next-intl";
-
-import { Button } from "@/components/ui/button";
 import MainSlider from "./(components)/home/MainSlider";
 import BtnModeToggle from "./(components)/navbar/BtnModeToggle";
 import BtnLanguage from "./(components)/navbar/BtnLanguage";
+import CategoriesSection from "./(components)/home/CategoriesSection";
 
 export default function HomePage() {
-  const t = useTranslations("HomePage");
-
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto ">
+      <BtnModeToggle />
+      <BtnLanguage />
       <MainSlider />
-      {/* <BtnModeToggle />
-      <BtnLanguage /> */}
+      <CategoriesSection />
     </div>
   );
 }

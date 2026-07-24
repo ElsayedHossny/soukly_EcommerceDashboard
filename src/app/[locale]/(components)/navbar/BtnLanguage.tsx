@@ -11,13 +11,7 @@ export default function BtnLanguage() {
   const nextLocale = locale === "en" ? "ar" : "en";
 
   const handleSwitch = () => {
-    console.log("1", pathname);
-    console.log("1", nextLocale);
-
     router.replace(pathname, { locale: nextLocale });
-
-    console.log("2", nextLocale);
-    console.log("2", pathname);
   };
 
   return (

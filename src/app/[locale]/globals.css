@@ -205,4 +205,16 @@
   html {
     @apply font-sans;
   }
+
+}
+
+@layer components {
+  .section-title {
+    @apply mb-2 relative ps-7 text-xl font-extrabold text-primary;
+  }
+
+  .section-title::before {
+    content: "";
+    @apply absolute start-0 top-1/2 h-8 w-5 -translate-y-1/2 rounded-sm bg-primary;
+  }
 }
