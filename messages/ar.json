@@ -4,6 +4,15 @@
     "subtitle": "تصفح حسب التصنيف",
     "btnContent": "المزيد من التصنيفات"
   },
+  "ProductTitle": {
+    "title": "منتجاتنا",
+    "subtitle": "استعرض منتجاتنا",
+    "btnContent": "المزيد من المنتجات"
+  },
+  "ProductCard": {
+    "outOfStock": "غير متوفر",
+    "currency": "ج.م"
+  },
   "Home": {
     "Hero": {
       "badge": "المجموعة الجديدة",

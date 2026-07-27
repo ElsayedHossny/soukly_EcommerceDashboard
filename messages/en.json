@@ -4,6 +4,15 @@
     "subtitle": "Browse By Category",
     "btnContent": "More Categories"
   },
+  "ProductTitle": {
+    "title": "Our Products",
+    "subtitle": "Explore Our Products",
+    "btnContent": "More Products"
+  },
+  "ProductCard": {
+    "outOfStock": "Out of stock",
+    "currency": "EGY"
+  },
   "Home": {
     "Hero": {
       "badge": "New Collection",

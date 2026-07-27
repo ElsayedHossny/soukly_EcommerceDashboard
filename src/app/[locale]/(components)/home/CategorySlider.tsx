@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { useLocale, useTranslations } from "next-intl";
+import { useLocale } from "next-intl";
 
 import "swiper/css";
 
@@ -19,19 +19,17 @@ const swiperConfig = {
     pauseOnMouseEnter: true,
   },
   breakpoints: {
-    0: { slidesPerView: 3, spaceBetween: 12 },
-    480: { slidesPerView: 4, spaceBetween: 14 },
-    640: { slidesPerView: 5, spaceBetween: 16 },
-    768: { slidesPerView: 6, spaceBetween: 20 },
-    1024: { slidesPerView: 7, spaceBetween: 20 },
-    1280: { slidesPerView: 8, spaceBetween: 24 },
+    0: { slidesPerView: 2, spaceBetween: 12 },
+    480: { slidesPerView: 3, spaceBetween: 14 },
+    640: { slidesPerView: 3, spaceBetween: 16 },
+    768: { slidesPerView: 4, spaceBetween: 20 },
+    1024: { slidesPerView: 5, spaceBetween: 20 },
+    1280: { slidesPerView: 7, spaceBetween: 24 },
   },
 };
 
 export default function CategorySlider({ data }: ICatrgoryResponse) {
   const locale = useLocale();
-  const t = useTranslations("Home.Categories");
-
   if (!data?.length) {
     return null;
   }
