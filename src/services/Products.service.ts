@@ -1,6 +1,6 @@
 export default async function getProductsRoute() {
   try {
-    const res = await fetch("https://ecommerce.routemisr.com/api/v1/products");
+    const res = await fetch(`https://ecommerce.routemisr.com/api/v1/products`);
     if (!res.ok) {
       throw new Error("Failed to fetch categories");
     }

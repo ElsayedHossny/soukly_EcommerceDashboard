@@ -28,7 +28,6 @@ export default async function ProductsSection() {
             subtitle={t("subtitle")}
             btnContent={t("btnContent")}
           />
-
           <div className="mt-8 grid grid-cols-1 gap-y-4 sm:grid-cols-2 gap-4  md:grid-cols-3 md:gap-6 lg:grid-cols-4 lg:gap-6">
             {displayedDummyProducts.map((product) => (
               <ProductCard key={product.id} product={product} />

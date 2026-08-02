@@ -11,7 +11,8 @@
   },
   "ProductCard": {
     "outOfStock": "غير متوفر",
-    "currency": "ج.م"
+    "currency": "ج.م",
+    "addToCart": "أضف إلى السلة"
   },
   "Home": {
     "Hero": {

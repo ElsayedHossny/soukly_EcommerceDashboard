@@ -11,7 +11,8 @@
   },
   "ProductCard": {
     "outOfStock": "Out of stock",
-    "currency": "EGY"
+    "currency": "EGY",
+    "addToCart": "Add To Cart"
   },
   "Home": {
     "Hero": {
