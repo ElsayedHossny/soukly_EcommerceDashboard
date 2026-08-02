@@ -33,6 +33,7 @@ export const metadata: Metadata = {
 };
 
 import { Cairo, Geist } from "next/font/google";
+import { Navbar1 } from "./(components)/layout/Navbar";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -68,6 +69,7 @@ export default async function RootLayout({ children, params }: Props) {
       <body className={poppins.className}>
         <ThemeProvider>
           <NextIntlClientProvider locale={locale} messages={messages}>
+            <Navbar1 />
             {children}
           </NextIntlClientProvider>
         </ThemeProvider>

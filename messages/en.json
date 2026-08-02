@@ -15,6 +15,11 @@
     "addToCart": "Add To Cart"
   },
   "Home": {
+    "navbar": {
+      "products": "products",
+      "Login": "Login",
+      "Sign_up": "Sign up"
+    },
     "Hero": {
       "badge": "New Collection",
       "title": "Discover Our Latest Fashion",

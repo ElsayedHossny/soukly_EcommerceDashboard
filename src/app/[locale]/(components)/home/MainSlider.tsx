@@ -86,6 +86,8 @@ export default function MainSlider() {
 
           <Image
             src={img}
+            width={100}
+            height={100}
             alt={
               t("badge")
                 ? `${t("badge")} - ${t("title")}`
@@ -94,7 +96,7 @@ export default function MainSlider() {
             priority={index === 0}
             fetchPriority={index === 0 ? "high" : "auto"}
             sizes="100vw"
-              className={`h-105 w-full object-cover sm:h-120 md:h-140 ${
+            className={`h-105 w-full object-cover sm:h-120 md:h-140 ${
               isRtl ? "-scale-x-100" : ""
             }`}
           />
