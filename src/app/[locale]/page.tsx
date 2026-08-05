@@ -1,6 +1,4 @@
 import MainSlider from "./(components)/home/MainSlider";
-import BtnModeToggle from "./(components)/navbar/BtnModeToggle";
-import BtnLanguage from "./(components)/navbar/BtnLanguage";
 import CategoriesSection from "./(components)/home/CategoriesSection";
 import ProductsSection from "./(components)/home/ProductsSection";
 export default function HomePage() {
@@ -9,8 +7,6 @@ export default function HomePage() {
       <div className="container mx-auto ">
         <MainSlider />
         <CategoriesSection />
-        <BtnModeToggle />
-        <BtnLanguage />
         <ProductsSection />
       </div>
     </>

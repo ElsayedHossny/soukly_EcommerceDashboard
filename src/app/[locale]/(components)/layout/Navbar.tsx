@@ -24,6 +24,8 @@ import LogoAr from "@assets/logoAR.png";
 
 import { useLocale, useTranslations } from "next-intl";
 import { AuthItem, MenuItem, Navbar1Props } from "@/interface/navbar.interface";
+import BtnModeToggle from "../navbar/BtnModeToggle";
+import BtnLanguage from "../navbar/BtnLanguage";
 
 const Navbar1 = () => {
   const locale = useLocale();
@@ -98,7 +100,12 @@ const Navbar1 = () => {
                   ))}
                 </NavigationMenuList>
               </NavigationMenu>
+              <div className="flex gap-2">
+                <BtnModeToggle />
+                <BtnLanguage />
+              </div>
             </div>
+
             <div className="flex items-center gap-2">
               <Link
                 href={auth.login.url}
@@ -180,6 +187,10 @@ const Navbar1 = () => {
                           {item.title}
                         </Link>
                       ))}
+                    </div>
+                    <div className="flex justify-center gap-2">
+                      <BtnModeToggle />
+                      <BtnLanguage />
                     </div>
                     <div className="flex flex-col gap-3">
                       <Link

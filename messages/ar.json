@@ -39,7 +39,6 @@
       "button": "تسوق الآن"
     }
   },
-
   "Product": {
     "reviews": "تقييم",
     "inStock": "متوفر",
@@ -57,5 +56,28 @@
     "brand": "الماركة:",
     "category": "الفئة:",
     "sku": "رقم المنتج:"
+  },
+  "Footer": {
+    "tagline": "وجهتك للتسوق الإلكتروني بأفضل الأسعار وأسرع توصيل.",
+    "quickLinks": "روابط سريعة",
+    "customerService": "خدمة العملاء",
+    "stayInTouch": "تواصل معنا",
+    "links": {
+      "home": "الرئيسية",
+      "shop": "المتجر",
+      "about": "من نحن",
+      "contact": "اتصل بنا"
+    },
+    "service": {
+      "faq": "الأسئلة الشائعة",
+      "shipping": "الشحن",
+      "returns": "الإرجاع",
+      "terms": "الشروط والأحكام"
+    },
+    "address": "القاهرة، مصر",
+    "emailPlaceholder": "بريدك الإلكتروني",
+    "subscribe": "اشتراك",
+    "rightsReserved": "جميع الحقوق محفوظة.",
+    "privacy": "سياسة الخصوصية"
   }
 }

@@ -56,5 +56,28 @@
     "brand": "Brand:",
     "category": "Category:",
     "sku": "SKU:"
+  },
+  "Footer": {
+    "tagline": "Your destination for online shopping with the best prices and fastest delivery.",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "stayInTouch": "Stay in Touch",
+    "links": {
+      "home": "Home",
+      "shop": "Shop",
+      "about": "About Us",
+      "contact": "Contact"
+    },
+    "service": {
+      "faq": "FAQ",
+      "shipping": "Shipping",
+      "returns": "Returns",
+      "terms": "Terms & Conditions"
+    },
+    "address": "Cairo, Egypt",
+    "emailPlaceholder": "Your email",
+    "subscribe": "Subscribe",
+    "rightsReserved": "All rights reserved.",
+    "privacy": "Privacy Policy"
   }
 }

@@ -2,6 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
+import { Button } from "@/components/ui/button";
 
 export default function BtnLanguage() {
   const locale = useLocale();
@@ -15,11 +16,15 @@ export default function BtnLanguage() {
   };
 
   return (
-    <button
+    <Button
+      variant="outline"
+      size="icon"
       onClick={handleSwitch}
-      className="bg-red-400 text-secondary-foreground px-4 py-2 rounded-md hover:opacity-90 transition"
+      className="relative flex h-8 w-8 items-center justify-center"
     >
-      {locale === "en" ? "English" : "العربية"}
-    </button>
+      <span className="text-sm font-bold leading-none">
+        {locale === "en" ? "EN" : "AR"}
+      </span>
+    </Button>
   );
 }

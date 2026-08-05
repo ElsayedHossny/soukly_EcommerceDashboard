@@ -34,6 +34,7 @@ export const metadata: Metadata = {
 
 import { Cairo, Geist } from "next/font/google";
 import { Navbar1 } from "./(components)/layout/Navbar";
+import Footer from "./(components)/layout/Footer";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -71,6 +72,7 @@ export default async function RootLayout({ children, params }: Props) {
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar1 />
             {children}
+            <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>
