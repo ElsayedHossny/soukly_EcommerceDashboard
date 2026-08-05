@@ -37,7 +37,7 @@ export default function MainSlider() {
 
   return (
     <Swiper
-      dir={isRtl ? "rtl" : "ltr"}
+      dir={isRtl ? "ltr" : "rtl"}
       {...swiperConfig}
       className="[&_.swiper-pagination-bullet]:bg-white/60 [&_.swiper-pagination-bullet]:opacity-100"
     >
@@ -66,7 +66,7 @@ export default function MainSlider() {
             </p>
 
             <Link
-              href="/shop"
+              href="/product"
               className="mt-6 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 font-medium text-primary-foreground shadow-sm transition-all hover:bg-primary-hover hover:shadow-md active:scale-[0.98]"
             >
               {t("button")}
@@ -88,12 +88,13 @@ export default function MainSlider() {
             src={img}
             width={100}
             height={100}
+            preload={index === 0}
+            loading={index === 0 ? "eager" : "lazy"}
             alt={
               t("badge")
                 ? `${t("badge")} - ${t("title")}`
                 : `Banner ${index + 1}`
             }
-            priority={index === 0}
             fetchPriority={index === 0 ? "high" : "auto"}
             sizes="100vw"
             className={`h-105 w-full object-cover sm:h-120 md:h-140 ${

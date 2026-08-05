@@ -23,7 +23,10 @@ export default async function ProductCard({ product }: ProductCardProps) {
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-card text-card-foreground shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-primary/10">
-      <Link href={`/product/${product.id}`} className="flex flex-1 flex-col">
+      <Link
+        href={`/productOffline/${product.id}`}
+        className="flex flex-1 flex-col"
+      >
         <div className="relative aspect-square w-full overflow-hidden bg-white border-b border-b-muted">
           {product.thumbnail ? (
             <Image

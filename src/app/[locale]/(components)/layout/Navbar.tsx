@@ -38,7 +38,8 @@ const Navbar1 = () => {
   };
   const navMenu: MenuItem[] = [
     { title: "Home", url: "/" },
-    { title: t("products"), url: "/products" },
+    { title: t("products"), url: "/product" },
+    { title: t("productsOffline"), url: "/productOffline" },
     { title: "Blog", url: "#" },
   ];
   const auth: AuthItem = {
@@ -132,7 +133,7 @@ const Navbar1 = () => {
                   loading="lazy"
                   width={100}
                   height={100}
-                  className="h-9 w-28 rounded-2xl bg-white p-0.5"
+                  className="h-10 w-32 rounded-2xl bg-white p-0.5"
                 />
               </Link>
               <Sheet>
@@ -159,7 +160,7 @@ const Navbar1 = () => {
                           loading="lazy"
                           width={100}
                           height={100}
-                          className="h-12 w-20 rounded-2xl bg-white p-0.5"
+                          className="h-10 w-32 rounded-2xl bg-white p-0.5"
                         />
                       </Link>
                     </SheetTitle>

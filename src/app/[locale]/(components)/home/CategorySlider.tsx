@@ -35,7 +35,7 @@ export default function CategorySlider({ data }: ICatrgoryResponse) {
   }
 
   return (
-    <Swiper dir={locale === "ar" ? "rtl" : "ltr"} {...swiperConfig}>
+    <Swiper dir={locale === "ar" ? "ltr" : "rtl"} {...swiperConfig}>
       {data.map((categ: ICatrgory) => (
         <SwiperSlide key={categ._id}>
           <Link

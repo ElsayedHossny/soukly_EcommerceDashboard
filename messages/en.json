@@ -7,7 +7,17 @@
   "ProductTitle": {
     "title": "Our Products",
     "subtitle": "Explore Our Products",
-    "btnContent": "More Products"
+    "btnContent": "More Products",
+    "online": {
+      "title": "Online Store",
+      "description": "Secure payment, fast delivery and easy returns.",
+      "button": "Shop Now"
+    },
+    "offline": {
+      "title": "Offline Store",
+      "description": "Reserve products and pick them up from the store.",
+      "button": "Explore Store"
+    }
   },
   "ProductCard": {
     "outOfStock": "Out of stock",
@@ -16,7 +26,9 @@
   },
   "Home": {
     "navbar": {
-      "products": "products",
+      "Home": "Home",
+      "products": "Shop_Online",
+      "productsOffline": "Shop_Offline",
       "Login": "Login",
       "Sign_up": "Sign up"
     },
@@ -26,5 +38,23 @@
       "description": "Shop the newest arrivals with exclusive offers and premium quality",
       "button": "Shop Now"
     }
+  },
+  "Product": {
+    "reviews": "Reviews",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "buyNow": "Buy Now",
+    "addToWishlist": "Add to Wishlist",
+    "off": "off",
+    "currency": "EGP",
+    "freeDelivery": "Free Delivery",
+    "checkPostalCode": "Enter your postal code to check delivery availability",
+    "returnDelivery": "Return Available",
+    "returnPolicy": "Free returns within 30 days.",
+    "details": "Details",
+    "customerReviews": "Customer Reviews",
+    "brand": "Brand:",
+    "category": "Category:",
+    "sku": "SKU:"
   }
 }

@@ -2,15 +2,18 @@
 import { Button } from "@/components/ui/button";
 import { MoveLeft, MoveRight } from "lucide-react";
 import { useLocale } from "next-intl";
+import Link  from 'next/link';
 
 export default function TitleSection({
   title,
   subtitle,
   btnContent,
+  HrefSection
 }: {
   title: string;
   subtitle: string;
   btnContent: string;
+  HrefSection:string;
 }) {
   const locale = useLocale();
   const isRtl = locale === "en";
@@ -23,9 +26,12 @@ export default function TitleSection({
         </span>
       </div>
       <div className="">
-        <Button>
-          {btnContent} {isRtl ? <MoveRight /> : <MoveLeft />}
-        </Button>
+<Link href={HrefSection}>
+  <Button className="cursor-pointer">
+    {btnContent}
+    {isRtl ? <MoveRight /> : <MoveLeft />}
+  </Button>
+</Link>
       </div>
     </div>
   );

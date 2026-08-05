@@ -29,16 +29,10 @@ export interface IProduct {
   id: string;
   priceAfterDiscount?: number;
   availableColors?: string[];
+  reviews?: IReview[]; // ⬅️ جديد
 }
 
 // Dummy Api
-
-export interface IPrductsDummy {
-  products: IProductDummy[];
-  total: number;
-  skip: number;
-  limit: number;
-}
 
 export interface IProductDummy {
   id: number;
@@ -84,4 +78,23 @@ export interface IMetaDummy {
   updatedAt: string;
   barcode: string;
   qrCode: string;
+}
+
+export interface IReviewUser {
+  _id: string;
+  name: string;
+}
+
+export interface IReview {
+  _id: string;
+  review: string;
+  rating: number;
+  product: string;
+  user: IReviewUser;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface ISingleProductResponse {
+  data: IProduct;
 }

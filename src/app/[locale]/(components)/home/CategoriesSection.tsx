@@ -14,7 +14,8 @@ export default async function CategoriesSection() {
       <TitleSection
         title={t("title")}
         subtitle={t("subtitle")}
-        btnContent={t("btnContent")}
+        btnContent={t("btnContent")}    
+        HrefSection="/categoties"
       />
       <CategorySlider {...categoriesResponse} />
     </div>

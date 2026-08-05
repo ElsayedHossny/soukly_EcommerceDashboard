@@ -7,7 +7,17 @@
   "ProductTitle": {
     "title": "منتجاتنا",
     "subtitle": "استعرض منتجاتنا",
-    "btnContent": "المزيد من المنتجات"
+    "btnContent": "المزيد من المنتجات",
+    "online": {
+      "title": "المتجر الإلكتروني",
+      "description": "تسوق أونلاين مع دفع آمن وتوصيل سريع.",
+      "button": "تسوق الآن"
+    },
+    "offline": {
+      "title": "المتجر المحلي",
+      "description": "احجز المنتجات واستلمها من المتجر.",
+      "button": "استكشف المتجر"
+    }
   },
   "ProductCard": {
     "outOfStock": "غير متوفر",
@@ -16,7 +26,9 @@
   },
   "Home": {
     "navbar": {
-      "products": "المنتجات",
+      "Home": "الرئيسية",
+      "products": "تسوق أونلاين",
+      "productsOffline": "تسوق محلي",
       "Login": "تسجيل الدخول",
       "Sign_up": "إنشاء حساب"
     },
@@ -26,5 +38,24 @@
       "description": "تسوق أحدث المنتجات بعروض حصرية وجودة عالية",
       "button": "تسوق الآن"
     }
+  },
+
+  "Product": {
+    "reviews": "تقييم",
+    "inStock": "متوفر",
+    "outOfStock": "غير متوفر",
+    "buyNow": "اشترِ الآن",
+    "addToWishlist": "أضف للمفضلة",
+    "off": "خصم",
+    "currency": "ج.م",
+    "freeDelivery": "توصيل مجاني",
+    "checkPostalCode": "أدخل الرمز البريدي لمعرفة إمكانية التوصيل",
+    "returnDelivery": "إمكانية الإرجاع",
+    "returnPolicy": "إرجاع مجاني خلال 30 يوم.",
+    "details": "التفاصيل",
+    "customerReviews": "تقييمات العملاء",
+    "brand": "الماركة:",
+    "category": "الفئة:",
+    "sku": "رقم المنتج:"
   }
 }
