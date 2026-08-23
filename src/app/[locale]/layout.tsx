@@ -35,6 +35,8 @@ export const metadata: Metadata = {
 import { Cairo, Geist } from "next/font/google";
 import { Navbar1 } from "./(components)/layout/Navbar";
 import Footer from "./(components)/layout/Footer";
+import { Toast } from "@base-ui/react";
+import { Toaster } from "@/components/ui/sonner";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -72,6 +74,7 @@ export default async function RootLayout({ children, params }: Props) {
           <NextIntlClientProvider locale={locale} messages={messages}>
             <Navbar1 />
             {children}
+            <Toaster position="top-center"/>
             <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>

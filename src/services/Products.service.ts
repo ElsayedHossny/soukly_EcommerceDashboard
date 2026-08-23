@@ -55,3 +55,19 @@ export async function getSpecificProductsDummy(id: string) {
     return [];
   }
 }
+
+export async function getProductsSearchParamsDummy(subCat: string) {
+  try {
+    const res = await fetch(
+      `https://dummyjson.com/products/category/${subCat}`,
+    );
+    if (!res.ok) {
+      throw new Error("Failed to fetch categories");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}

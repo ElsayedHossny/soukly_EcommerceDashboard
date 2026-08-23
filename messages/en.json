@@ -40,6 +40,7 @@
     }
   },
   "Product": {
+    "Cat": "Filter",
     "reviews": "Reviews",
     "inStock": "In Stock",
     "outOfStock": "Out of Stock",
@@ -56,6 +57,35 @@
     "brand": "Brand:",
     "category": "Category:",
     "sku": "SKU:"
+  },
+  "category": {
+    "Cat": "Filter",
+    "select": "Select a Products",
+    "All": "All Products",
+    "beauty": "Beauty",
+    "fragrances": "Fragrances",
+    "furniture": "Furniture",
+    "groceries": "Groceries",
+    "home-decoration": "Home Decoration",
+    "kitchen-accessories": "Kitchen Accessories",
+    "laptops": "Laptops",
+    "mens-shirts": "Men's Shirts",
+    "mens-shoes": "Men's Shoes",
+    "mens-watches": "Men's Watches",
+    "mobile-accessories": "Mobile Accessories",
+    "motorcycle": "Motorcycles",
+    "skin-care": "Skin Care",
+    "smartphones": "Smartphones",
+    "sports-accessories": "Sports Accessories",
+    "sunglasses": "Sunglasses",
+    "tablets": "Tablets",
+    "tops": "Tops",
+    "vehicle": "Vehicles",
+    "womens-bags": "Women's Bags",
+    "womens-dresses": "Women's Dresses",
+    "womens-jewellery": "Women's Jewellery",
+    "womens-shoes": "Women's Shoes",
+    "womens-watches": "Women's Watches"
   },
   "Footer": {
     "tagline": "Your destination for online shopping with the best prices and fastest delivery.",

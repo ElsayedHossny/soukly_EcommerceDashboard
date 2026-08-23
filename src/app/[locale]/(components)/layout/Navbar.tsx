@@ -45,8 +45,8 @@ const Navbar1 = () => {
     { title: "Blog", url: "#" },
   ];
   const auth: AuthItem = {
-    login: { title: t("Login"), url: "#" },
-    signup: { title: t("Sign_up"), url: "#" },
+    login: { title: t("Login"), url: "/login" },
+    signup: { title: t("Sign_up"), url: "/register" },
   };
 
   const isActive = (url: string) => url !== "#" && pathname === url;
@@ -72,7 +72,7 @@ const Navbar1 = () => {
                   alt={logo.alt}
                   width={100}
                   height={100}
-                  loading="lazy"
+                  priority
                   className="h-12 w-40 rounded-2xl bg-white p-0.5"
                 />
                 {logo.title && (

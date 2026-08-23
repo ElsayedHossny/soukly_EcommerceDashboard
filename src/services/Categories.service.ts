@@ -26,3 +26,16 @@ export async function getCategoriesDummy() {
     return [];
   }
 }
+export async function getCategoryList() {
+  try {
+    const res = await fetch("https://dummyjson.com/products/category-list");
+    if (!res.ok) {
+      throw new Error("Failed to fetch categories");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+}
