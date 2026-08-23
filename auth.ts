@@ -6,8 +6,8 @@ export const AuthOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: { label: "email", type: "email", placeholder: "username@gmail.com" },
-        password: { label: "Password", type: "password" },
+        email: {},
+        password: {},
       },
       async authorize(credentials) {
         try {
@@ -27,7 +27,9 @@ export const AuthOptions: NextAuthOptions = {
           }
 
           return {
-            user:data.user,
+            id: data.user?._id || data.user?.id,
+            email: data.user?.email,
+            name: data.user?.name,
             token: data.token,
           };
         } catch (error) {
@@ -42,7 +44,6 @@ export const AuthOptions: NextAuthOptions = {
       if (user && typeof user === "object" && "token" in user) {
         token.accessToken = user.token as string;
       }
-
       return token;
     },
     async session({ session, token }) {
