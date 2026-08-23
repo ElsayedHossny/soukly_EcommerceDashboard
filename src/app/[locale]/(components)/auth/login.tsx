@@ -47,7 +47,7 @@ export function LoginForm() {
     },
   });
 
-  const router = useRouter();
+
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
@@ -70,7 +70,7 @@ export function LoginForm() {
         toast.success("Success Login", {
           duration: 1000,
         });
-        router.push("/");
+        window.location.href = "/";
       }
     } catch (error) {
       console.log(error);
