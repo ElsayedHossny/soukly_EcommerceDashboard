@@ -27,8 +27,7 @@ export const AuthOptions: NextAuthOptions = {
           }
 
           return {
-            id: data.user?._id || data.user?.id || data.user?.email || "user",
-            ...data.user,
+            user:data.user,
             token: data.token,
           };
         } catch (error) {
