@@ -26,10 +26,10 @@ export const AuthOptions: NextAuthOptions = {
             throw new Error(`${data.message}` || "something went Wrong");
           }
 
+          const decode =  JSON.parse ( atob(data.token.split('.')[1]) ) ;
           return {
-            id: data.user?._id || data.user?.id,
-            email: data.user?.email,
-            name: data.user?.name,
+            id: decode.id,
+            user: data.user,
             token: data.token,
           };
         } catch (error) {
