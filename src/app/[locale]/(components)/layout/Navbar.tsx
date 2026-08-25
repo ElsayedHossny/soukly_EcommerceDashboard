@@ -55,9 +55,9 @@ const Navbar1 = () => {
 
   const isActive = (url: string) => url !== "#" && pathname === url;
 
-  const { data: session, status } = useSession();
+  const { data: sessions, status } = useSession();
 
-  // console.log(session);
+  // console.log(sessions);
 
   return (
     <div className="sticky top-0 z-50 w-full px-3 py-3 md:px-6">
@@ -157,7 +157,7 @@ const Navbar1 = () => {
                         9
                       </Badge>
                     </Link>
-                    
+
                     <Link
                       href="/cart"
                       className="relative inline-flex items-center justify-center"
