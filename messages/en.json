@@ -1,4 +1,80 @@
 {
+  "Auth": {
+    "register": {
+      "title": "Register",
+      "description": "Register to your account and continue shopping"
+    },
+    "fields": {
+      "name": {
+        "label": "Name",
+        "placeholder": "Enter your name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password"
+      },
+      "rePassword": {
+        "label": "Confirm Password",
+        "placeholder": "Confirm your password"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "Enter your phone number"
+      }
+    },
+    "errors": {
+      "nameMin": "Name must be at least 3 characters.",
+      "nameMax": "Name must be at most 32 characters.",
+      "nameFormat": "Name can only contain letters and spaces.",
+      "emailInvalid": "Please enter a valid email address.",
+      "emailMin": "Email must be at least 5 characters.",
+      "emailMax": "Email must be at most 100 characters.",
+      "passwordMin": "Password must be at least 8 characters.",
+      "passwordMax": "Password must be at most 100 characters.",
+      "passwordUppercase": "Password must contain at least one uppercase letter.",
+      "passwordLowercase": "Password must contain at least one lowercase letter.",
+      "passwordNumber": "Password must contain at least one number.",
+      "rePasswordMin": "Confirm password must be at least 8 characters.",
+      "rePasswordMax": "Confirm password must be at most 100 characters.",
+      "passwordMismatch": "Passwords do not match.",
+      "phoneMin": "Phone number must be at least 10 characters.",
+      "phoneMax": "Phone number must be at most 15 characters.",
+      "phoneFormat": "Please enter a valid phone number."
+    },
+    "toast": {
+      "genericError": "Something went wrong, please try again.",
+      "networkError": "Could not connect to the server, please try again.",
+      "success": "Account created successfully."
+    },
+    "submitting": "Submitting...",
+    "submit": "Submit",
+
+    "Login": {
+      "title": "Login",
+      "description": "Login to your account and continue shopping",
+      "email": { "label": "Email", "placeholder": "Enter your email" },
+      "password": { "label": "Password", "placeholder": "Enter your password" },
+      "submit": "Submit",
+      "errors": {
+        "emailMin": "Email must be at least 5 characters.",
+        "emailMax": "Email must be at most 100 characters.",
+        "emailInvalid": "Please enter a valid email address.",
+        "passwordMin": "Password must be at least 8 characters.",
+        "passwordMax": "Password must be at most 100 characters."
+      },
+      "toast": {
+        "success": "Success Login",
+        "invalidCredentials": "Incorrect email or password.",
+        "genericError": "Something went wrong, please try again."
+      },
+      "signingIn": "Signing in..."
+    }
+  },
+
   "CategoryTitle": {
     "title": "Categories",
     "subtitle": "Browse By Category",
@@ -30,7 +106,8 @@
       "products": "Shop_Online",
       "productsOffline": "Shop_Offline",
       "Login": "Login",
-      "Sign_up": "Sign up"
+      "Sign_up": "Sign Up",
+      "Sign_Out": "Sign Out"
     },
     "Hero": {
       "badge": "New Collection",

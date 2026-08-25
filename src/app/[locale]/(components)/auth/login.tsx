@@ -3,6 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
+import { Loader2 } from "lucide-react";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -23,22 +25,23 @@ import {
 import { Input } from "@/components/ui/input";
 
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   email: z
     .string()
-    .min(5, "Email must be at least 5 characters.")
-    .max(100, "Email must be at most 100 characters.")
-    .email("Please enter a valid email address."),
+    .min(5, "Login.errors.emailMin")
+    .max(100, "Login.errors.emailMax")
+    .email("Login.errors.emailInvalid"),
 
   password: z
     .string()
-    .min(8, "Password must be at least 8 characters.")
-    .max(100, "Password must be at most 100 characters."),
+    .min(8, "Login.errors.passwordMin")
+    .max(100, "Login.errors.passwordMax"),
 });
 
 export function LoginForm() {
+  const t = useTranslations("Auth");
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +50,16 @@ export function LoginForm() {
     },
   });
 
+  const isSubmitting = form.formState.isSubmitting;
 
+  function translateAuthError(errorCode: string) {
+    switch (errorCode) {
+      case "CredentialsSignin":
+        return t("Login.toast.invalidCredentials");
+      default:
+        return t("Login.toast.genericError");
+    }
+  }
 
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
@@ -57,33 +69,32 @@ export function LoginForm() {
         redirect: false,
         callbackUrl: "/",
       });
-      
-      // console.log("sayed", res);
+
       if (res?.error) {
-        toast.error(res.error,{
-          duration: 1000,
+        toast.error(translateAuthError(res.error), {
+          duration: 2000,
         });
         console.log("Login failed:", res.error);
         return;
-      } 
-      else {
-        toast.success("Success Login", {
-          duration: 1000,
+      } else {
+        toast.success(t("Login.toast.success"), {
+          duration: 2000,
         });
         window.location.href = "/";
       }
     } catch (error) {
       console.log(error);
+      toast.error(t("Login.toast.genericError"), {
+        duration: 3000,
+      });
     }
   }
 
   return (
     <Card className="w-full sm:max-w-md">
       <CardHeader>
-        <CardTitle>Login</CardTitle>
-        <CardDescription>
-          Login to your account and continue shopping
-        </CardDescription>
+        <CardTitle>{t("Login.title")}</CardTitle>
+        <CardDescription>{t("Login.description")}</CardDescription>
       </CardHeader>
       <CardContent>
         <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
@@ -93,19 +104,22 @@ export function LoginForm() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-email">Email</FieldLabel>
+                  <FieldLabel htmlFor="form-rhf-demo-email">
+                    {t("Login.email.label")}
+                  </FieldLabel>
 
                   <Input
                     {...field}
                     id="form-rhf-demo-email"
                     type="email"
                     aria-invalid={fieldState.invalid}
-                    placeholder="Enter your email"
+                    placeholder={t("Login.email.placeholder")}
                     autoComplete="email"
+                    disabled={isSubmitting}
                   />
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
+                  {fieldState.invalid && fieldState.error?.message && (
+                    <FieldError>{t(fieldState.error.message)}</FieldError>
                   )}
                 </Field>
               )}
@@ -116,7 +130,7 @@ export function LoginForm() {
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
                   <FieldLabel htmlFor="form-rhf-demo-password">
-                    Password
+                    {t("Login.password.label")}
                   </FieldLabel>
 
                   <Input
@@ -124,12 +138,13 @@ export function LoginForm() {
                     id="form-rhf-demo-password"
                     type="password"
                     aria-invalid={fieldState.invalid}
-                    placeholder="Enter your password"
+                    placeholder={t("Login.password.placeholder")}
                     autoComplete="current-password"
+                    disabled={isSubmitting}
                   />
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
+                  {fieldState.invalid && fieldState.error?.message && (
+                    <FieldError>{t(fieldState.error.message)}</FieldError>
                   )}
                 </Field>
               )}
@@ -139,8 +154,14 @@ export function LoginForm() {
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="submit" className="w-full" form="form-rhf-demo">
-            Submit
+          <Button
+            type="submit"
+            className="w-full cursor-pointer"
+            form="form-rhf-demo"
+            disabled={isSubmitting}
+          >
+            {isSubmitting && <Loader2 className="animate-spin" />}
+            {isSubmitting ? t("Login.signingIn") : t("Login.submit")}
           </Button>
         </Field>
       </CardFooter>

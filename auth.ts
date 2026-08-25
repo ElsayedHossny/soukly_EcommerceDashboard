@@ -11,14 +11,17 @@ export const AuthOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         try {
-          const res = await fetch("https://ecommerce.routemisr.com/api/v1/auth/signin", {
-            method: "POST",
-            body: JSON.stringify({
-              email: credentials?.email,
-              password: credentials?.password,
-            }),
-            headers: { "Content-Type": "application/json" },
-          });
+          const res = await fetch(
+            "https://ecommerce.routemisr.com/api/v1/auth/signin",
+            {
+              method: "POST",
+              body: JSON.stringify({
+                email: credentials?.email,
+                password: credentials?.password,
+              }),
+              headers: { "Content-Type": "application/json" },
+            },
+          );
 
           const data = await res.json();
 
@@ -26,34 +29,38 @@ export const AuthOptions: NextAuthOptions = {
             throw new Error(`${data.message}` || "something went Wrong");
           }
 
-          const decode =  JSON.parse ( atob(data.token.split('.')[1]) ) ;
+          const decode = JSON.parse(atob(data.token.split(".")[1]));
           return {
             id: decode.id,
             user: data.user,
             token: data.token,
           };
         } catch (error) {
-          const message = error instanceof Error ? error.message : "Authentication failed";
+          const message =
+            error instanceof Error ? error.message : "Authentication failed";
           throw new Error(message);
         }
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
-      if (user && typeof user === "object" && "token" in user) {
-        token.accessToken = user.token as string;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        (session as any).accessToken = token.accessToken;
+      if (user) {
+        token.user = user.user;
+        token.token = user.token;
       }
 
+      return token;
+    },
+
+    async session({ session, token }) {
+      session.user = token.user ?? "";
+      session.token = token.token ?? "";
       return session;
     },
   },
+
   pages: {
     signIn: "/login",
   },

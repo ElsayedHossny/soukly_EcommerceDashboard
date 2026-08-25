@@ -15,6 +15,10 @@ export interface AuthItem {
     title: string;
     url: string;
   };
+  signout: {
+    title: string;
+    url: string;
+  };
 }
 
 export interface Navbar1Props {

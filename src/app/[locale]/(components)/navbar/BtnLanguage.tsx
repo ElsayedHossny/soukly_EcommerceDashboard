@@ -20,7 +20,7 @@ export default function BtnLanguage() {
       variant="outline"
       size="icon"
       onClick={handleSwitch}
-      className="relative flex h-8 w-8 items-center justify-center"
+      className="relative cursor-pointer flex h-8 w-8 items-center justify-center"
     >
       <span className="text-sm font-bold leading-none">
         {locale === "en" ? "EN" : "AR"}

@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
+import { useActionState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 import * as z from "zod";
 
 import { Button } from "@/components/ui/button";
@@ -21,48 +24,30 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { formSchema } from "./registerSchema";
+import handleRegister, { RegisterActionState } from "@/services/Auth.service";
+import { Loader2 } from "lucide-react";
 
-const formSchema = z
-  .object({
-    name: z
-      .string()
-      .min(3, "Name must be at least 3 characters.")
-      .max(32, "Name must be at most 32 characters.")
-      .regex(/^[A-Za-z\s]+$/, "Name can only contain letters and spaces."),
+const initForm: RegisterActionState = {
+  success: false,
+  error: {},
+  message: null,
+};
 
-    email: z
-      .string()
-      .email("Please enter a valid email address.")
-      .min(5, "Email must be at least 5 characters.")
-      .max(100, "Email must be at most 100 characters."),
-
-    password: z
-      .string()
-      .min(8, "Password must be at least 8 characters.")
-      .max(100, "Password must be at most 100 characters.")
-      .regex(/[A-Z]/, "Password must contain at least one uppercase letter.")
-      .regex(/[a-z]/, "Password must contain at least one lowercase letter.")
-      .regex(/[0-9]/, "Password must contain at least one number."),
-
-    rePassword: z
-      .string()
-      .min(8, "Confirm password must be at least 8 characters.")
-      .max(100, "Confirm password must be at most 100 characters."),
-
-    phone: z
-      .string()
-      .min(10, "Phone number must be at least 10 characters.")
-      .max(15, "Phone number must be at most 15 characters.")
-      .regex(/^\+?[0-9]+$/, "Please enter a valid phone number."),
-  })
-  .refine((data) => data.password === data.rePassword, {
-    message: "Passwords do not match.",
-    path: ["rePassword"],
-  });
+const FIELDS = [
+  { name: "name", type: "text", autoComplete: "name" },
+  { name: "email", type: "email", autoComplete: "email" },
+  { name: "password", type: "password", autoComplete: "new-password" },
+  { name: "rePassword", type: "password", autoComplete: "new-password" },
+  { name: "phone", type: "tel", autoComplete: "tel" },
+] as const;
 
 export function RegisterForm() {
+  const t = useTranslations();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    mode: "onBlur",
     defaultValues: {
       name: "",
       email: "",
@@ -72,145 +57,80 @@ export function RegisterForm() {
     },
   });
 
-  function onSubmit(data: z.infer<typeof formSchema>) {
-    console.log(data);
+  const [action, formAction, isPending] = useActionState(
+    handleRegister,
+    initForm
+  );
+
+  useEffect(() => {
+    if (action.success) {
+      toast.success(action.message ?? t("Auth.toast.success"));
+      form.reset();
+      window.location.href = "/login";
+    } else if (action.message) {
+      toast.error(action.message);
+    }
+  }, [action]);
+
+  function fieldErrorText(key: string | undefined) {
+    return key ? t(key) : undefined;
   }
 
   return (
     <Card className="w-full h-full sm:max-w-md">
       <CardHeader>
-        <CardTitle>Register</CardTitle>
-        <CardDescription>
-          Register to your account and continue shopping
-        </CardDescription>
+        <CardTitle>{t("Auth.register.title")}</CardTitle>
+        <CardDescription>{t("Auth.register.description")}</CardDescription>
       </CardHeader>
       <CardContent>
-        <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
+        <form id="form-rhf-demo" action={formAction}>
           <FieldGroup>
-            <Controller
-              name="name"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-name">Name</FieldLabel>
+            {FIELDS.map(({ name, type, autoComplete }) => (
+              <Controller
+                key={name}
+                name={name}
+                control={form.control}
+                render={({ field, fieldState }) => {
+                  const errorMessage = fieldErrorText(
+                    fieldState.error?.message ?? action.error?.[name]?.[0]
+                  );
+                  const inputId = `form-rhf-demo-${name}`;
 
-                  <Input
-                    {...field}
-                    id="form-rhf-demo-name"
-                    type="text"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter your name"
-                    autoComplete="name"
-                  />
+                  return (
+                    <Field data-invalid={!!errorMessage}>
+                      <FieldLabel htmlFor={inputId}>
+                        {t(`Auth.fields.${name}.label`)}
+                      </FieldLabel>
 
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="email"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-email">Email</FieldLabel>
+                      <Input
+                        {...field}
+                        id={inputId}
+                        type={type}
+                        aria-invalid={!!errorMessage}
+                        placeholder={t(`Auth.fields.${name}.placeholder`)}
+                        autoComplete={autoComplete}
+                      />
 
-                  <Input
-                    {...field}
-                    id="form-rhf-demo-email"
-                    type="email"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter your email"
-                    autoComplete="email"
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-
-            <Controller
-              name="password"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-password">
-                    Password
-                  </FieldLabel>
-
-                  <Input
-                    {...field}
-                    id="form-rhf-demo-password"
-                    type="password"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter your password"
-                    autoComplete="new-password"
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="rePassword"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-rePassword">
-                    Confirm Password
-                  </FieldLabel>
-
-                  <Input
-                    {...field}
-                    id="form-rhf-demo-rePassword"
-                    type="password"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Confirm your password"
-                    autoComplete="new-password"
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
-            <Controller
-              name="phone"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="form-rhf-demo-phone">
-                    Phone Number
-                  </FieldLabel>
-
-                  <Input
-                    {...field}
-                    id="form-rhf-demo-phone"
-                    type="tel"
-                    aria-invalid={fieldState.invalid}
-                    placeholder="Enter your phone number"
-                    autoComplete="tel"
-                  />
-
-                  {fieldState.invalid && (
-                    <FieldError errors={[fieldState.error]} />
-                  )}
-                </Field>
-              )}
-            />
+                      {errorMessage && (
+                        <FieldError>{errorMessage}</FieldError>
+                      )}
+                    </Field>
+                  );
+                }}
+              />
+            ))}
           </FieldGroup>
         </form>
       </CardContent>
       <CardFooter>
         <Field orientation="horizontal">
-          <Button type="submit" className="w-full" form="form-rhf-demo">
-            Submit
+          <Button
+            type="submit"
+            className="w-full cursor-pointer"
+            form="form-rhf-demo"
+            disabled={isPending}
+          > {isPending && <Loader2 className="animate-spin" />}
+            {isPending ? t("Auth.submitting") : t("Auth.submit")}
           </Button>
         </Field>
       </CardFooter>
