@@ -1,3 +1,5 @@
+![Soukly Ecommerce Project](./Soukly.png)
+
 # 🛍️ Soukly — Modern E-Commerce Platform
 
 **Soukly** is a modern, responsive, and multilingual e-commerce platform built with **Next.js, TypeScript, and Tailwind CSS**.
